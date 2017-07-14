@@ -25,8 +25,7 @@
         "psr-4": {
             "dubbo\\":"src/",
             "dubbo\\invok\\":"src/invok/",
-            "dubbo\\protocols\\":"src/invok/protocols/",
-            "DubboPhp\\Client\\": "src/DubboPhp/Client/"
+            "dubbo\\protocols\\":"src/invok/protocols/"
         }
     },
     "autoload-dev": {
