@@ -38,7 +38,7 @@ abstract class Invoker{
         if($protocol=='jsonrpc'){
             $url = $host.'/'.$invokerDesc->getService();
         }else if($protocol=='hessian'){
-
+            $url = $host;
         }
         return $url;
     }
