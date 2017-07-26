@@ -7,7 +7,7 @@ class invokerDesc{
 	private $serviceName = " ";
     private $group = " ";
     private $version = " ";
-	private $schema = 'jsonrpc';
+	private $schema = 'hessian';
 
     public function __construct($serviceName, $version=null, $group=null){
         $this->serviceName = $serviceName ;
