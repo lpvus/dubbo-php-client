@@ -10,7 +10,7 @@ namespace dubbo;
 
 use Illuminate\Support\ServiceProvider;
 
-class UserCenterServiceProvider extends ServiceProvider
+class dubboClientServiceProvider extends ServiceProvider
 {
 
     public function boot()
