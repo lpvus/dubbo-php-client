@@ -150,23 +150,24 @@ php -f example.php
 
 # 按Composer规范修改版本
 
-在本仓库分支未被quickj合并之前composer.json需要加入自定义源：
-本地依赖包的仓库地址(repositories)节点中增加:
+composer.json需要加入自定义源：
+本地依赖包的仓库地址(repositories)节点中和require节点中增加:
 
 ```
 "repositories": [
         {
             "type": "vcs",
-            "url": "https://github.com/nickfan/dubbo-php-client.git"
+            "url": "http://59.110.90.150/wy/dubbo-php-client.git"
         }
     ]
+
 
 ```
 
 然后安装执行：
 
 ```bash
-composer require -vvv "quickj/dubbo-php-client:dev-master"
+composer require -vvv "wy/dubbo-php-client:dev-master"
 
 ```
 
@@ -215,28 +216,17 @@ config/app.php的
 providers数组中增加：
 
 ```php
-DubboPhp\Client\DubboPhpClientServiceProvider::class
+dubbo\dubboClientServiceProvider::class
 ```
 
-aliases别名数组中增加：
-
-```php
-
-'DubboPhpClient'=>DubboPhp\Client\Facades\DubboPhpClient::class,
-
-'DubboPhpClientFactory'=>DubboPhp\Client\Facades\DubboPhpClientFactory::class,
-
+.env增加配置
+```
+DUBBO_REG_ADDR=127.0.0.1:2181
+DUBBO_VER=1.0
+DUBBO_GROUP=null
+DUBBO_PROTOCOL=hessian
 ```
 
-
-然后命令行发布一下系统基本配置文件dubbo_cli.php到config路径：
-
-```php
-php artisan vendor:publish --provider="DubboPhp\Client\DubboPhpClientServiceProvider"
-
-```
-
-基本安装配置完成，相关的配置在config('dubbo_cli.default')中设置，具体参考配置文件
 
 
 ### Laravel中的使用：
@@ -244,24 +234,11 @@ php artisan vendor:publish --provider="DubboPhp\Client\DubboPhpClientServiceProv
 #### 单实例方式（配置读取config('dubbo_cli.default')）：
 
 ```php
-$testService = DubboPhpClient::getService('com.dubbo.demo.HelloService');
+$testService = dubboClient::getService('com.dubbo.demo.HelloService');
 
 $ret = $testService->hello("dubbo php client");
 var_dump($ret);
     
 ```
 
-#### 多实例的方式（配置读取config('dubbo_cli.connections.xxx')）：
 
-```php
-$clientA = DubboPhpClientFactory::factory(config('dubbo_cli.connections.xxxA'));
-$testServiceA = $clientA->getService('com.dubbo.demo.HelloService');
-$retA = $testServiceA->hello("dubbo php client");
-var_dump($retA);
-
-$clientB = DubboPhpClientFactory::factory(config('dubbo_cli.connections.xxxB'));
-$testServiceB = $clientB->getService('com.dubbo.demo.HelloService');
-$retB = $testServiceB->hello("dubbo php client");
-var_dump($retB);
-
-```
