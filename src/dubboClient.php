@@ -3,10 +3,7 @@ namespace dubbo;
 require_once "register.php";
 require_once "invok/invokerDesc.php";
 require_once "invok/protocols/jsonrpc.php";
-use \dubbo\Register;
-use \dubbo\invok\protocols\jsonRPC;
 use \dubbo\invok\invokerDesc;
-use \dubbo\invok\protocols;
 
 /**
  * Class dubboClient
@@ -36,7 +33,6 @@ class dubboClient{
         $invokerDesc = new InvokerDesc($serviceName, $serviceVersion, $serviceGroup);
         $invoker = $this->register->getInvoker($invokerDesc);
         if(!$invoker){
-            //$invoker = new jsonrpc();
             $invoker = $this->makeInvokerByProtocol($serviceProtocol);
             $this->register->register($invokerDesc,$invoker);
         }
