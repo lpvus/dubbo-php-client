@@ -9,7 +9,7 @@ use \dubbo\invok\invokerDesc;
  * Class dubboClient
  * @package dubbo
  */
-class dubboClient{
+class DubboClient{
     protected $register;
     static $protocols = array();
 
