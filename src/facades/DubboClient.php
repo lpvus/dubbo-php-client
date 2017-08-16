@@ -10,7 +10,7 @@ namespace dubbo\facades;
 
 use Illuminate\Support\Facades\Facade;
 
-class dubboClient extends Facade
+class DubboClient extends Facade
 {
     protected static function getFacadeAccessor()
     {
