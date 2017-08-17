@@ -66,7 +66,7 @@ class hessian extends Invoker{
         while(!$this->endsWith($receive, "dubbo>")) {
             $receive .= fread($fd, 1 << 13);
         }
-        //fclose($fd);
+        fclose($fd);
         return $receive;
 
     }
