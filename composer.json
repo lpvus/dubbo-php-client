@@ -22,9 +22,9 @@
     },
     "autoload": {
         "psr-4": {
-            "dubbo\\":"src/",
-            "dubbo\\invok\\":"src/invok/",
-            "dubbo\\protocols\\":"src/invok/protocols/"
+            "Dubbo\\":"src/",
+            "Dubbo\\Invok\\":"src/Invok/",
+            "Dubbo\\Protocols\\":"src/Invok/Protocols/"
         }
     },
     "autoload-dev": {
