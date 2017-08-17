@@ -1,11 +1,10 @@
 <?php
 
-namespace dubbo;
+namespace Dubbo;
 
-require_once "invok/cluster.php";
-require_once "invok/invoker.php";
-use \dubbo\invok\Cluster;
-use dubbo\invok\Invoker;
+require_once "Invok/Cluster.php";
+require_once "Invok/Invoker.php";
+use \Dubbo\Invok\Cluster;
 
 
 class Register{
