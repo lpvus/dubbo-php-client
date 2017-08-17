@@ -1,9 +1,9 @@
 <?php
-namespace dubbo;
-require_once "register.php";
-require_once "invok/invokerDesc.php";
-require_once "invok/protocols/jsonrpc.php";
-use \dubbo\invok\invokerDesc;
+namespace Dubbo;
+require_once "Register.php";
+require_once "Invok/InvokerDesc.php";
+require_once "Invok/Protocols/jsonrpc.php";
+use \Dubbo\Invok\InvokerDesc;
 
 /**
  * Class dubboClient
@@ -50,11 +50,11 @@ class DubboClient{
             return self::$protocols[$protocol];
         }
 
-        foreach( glob( dirname(__FILE__)."/invok/protocols/*.php" ) as $filename ){
+        foreach( glob( dirname(__FILE__)."/Invok/Protocols/*.php" ) as $filename ){
             $protoName = basename($filename,".php");
             require_once $filename;
-            if(class_exists("dubbo\invok\protocols\\$protoName")){
-                $class =  new \ReflectionClass("dubbo\invok\protocols\\$protoName");
+            if(class_exists("Dubbo\Invok\Protocols\\$protoName")){
+                $class =  new \ReflectionClass("Dubbo\Invok\Protocols\\$protoName");
                 $invoker = $class->newInstanceArgs(array());
                 self::$protocols[$protoName] = $invoker;
             }
